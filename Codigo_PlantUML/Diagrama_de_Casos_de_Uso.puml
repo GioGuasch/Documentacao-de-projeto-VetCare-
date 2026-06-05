@@ -1,0 +1,45 @@
+@startuml
+
+left to right direction
+
+actor Cliente
+actor Recepcionista
+actor Veterinario
+actor Administrador
+
+rectangle VetCarePlus {
+
+  usecase "UC-01\nRealizar Login" as UC1
+  usecase "UC-02\nCadastrar Cliente" as UC2
+  usecase "UC-03\nCadastrar Animal" as UC3
+  usecase "UC-04\nAgendar Consulta" as UC4
+  usecase "UC-05\nCancelar Consulta" as UC5
+  usecase "UC-06\nRegistrar Atendimento" as UC6
+  usecase "UC-07\nEmitir Receita" as UC7
+  usecase "UC-08\nRegistrar Vacinação" as UC8
+  usecase "UC-09\nConsultar Histórico Médico" as UC9
+  usecase "UC-10\nGerar Relatórios" as UC10
+
+}
+
+Cliente --> UC1
+
+Recepcionista --> UC1
+Recepcionista --> UC2
+Recepcionista --> UC3
+Recepcionista --> UC4
+Recepcionista --> UC5
+
+Veterinario --> UC1
+Veterinario --> UC6
+Veterinario --> UC7
+Veterinario --> UC8
+Veterinario --> UC9
+
+Administrador --> UC1
+Administrador --> UC10
+
+UC7 ..> UC6 : <<extend>>
+UC8 ..> UC6 : <<extend>>
+
+@enduml
