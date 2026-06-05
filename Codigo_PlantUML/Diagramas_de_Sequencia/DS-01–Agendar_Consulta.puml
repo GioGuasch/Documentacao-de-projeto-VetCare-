@@ -1,0 +1,45 @@
+@startuml
+
+actor Recepcionista
+
+boundary TelaAgendamento
+control ConsultaController
+control ConsultaService
+
+entity Cliente
+entity Animal
+entity Consulta
+
+database BancoDeDados
+
+Recepcionista -> TelaAgendamento : informar dados
+
+TelaAgendamento -> ConsultaController : agendarConsulta()
+
+ConsultaController -> ConsultaService : validarDados()
+
+ConsultaService -> Cliente : verificarCadastro()
+
+Cliente --> ConsultaService : cliente válido
+
+ConsultaService -> Animal : verificarCadastro()
+
+Animal --> ConsultaService : animal válido
+
+ConsultaService -> BancoDeDados : verificarDisponibilidade()
+
+BancoDeDados --> ConsultaService : horário disponível
+
+ConsultaService -> Consulta : criarConsulta()
+
+Consulta --> ConsultaService : consulta criada
+
+ConsultaService -> BancoDeDados : salvarConsulta()
+
+BancoDeDados --> ConsultaService : confirmação
+
+ConsultaService --> ConsultaController : sucesso
+
+ConsultaController --> TelaAgendamento : exibir confirmação
+
+@enduml
