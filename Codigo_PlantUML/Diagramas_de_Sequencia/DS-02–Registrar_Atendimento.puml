@@ -2,28 +2,56 @@
 
 actor Veterinario
 
-boundary "Tela Atendimento" as Tela
-control "AtendimentoController" as Controller
-control "AtendimentoService" as Service
-entity "Prontuario" as Prontuario
-database "Banco de Dados" as BD
+boundary TelaAtendimento
+control AtendimentoController
+control AtendimentoService
+entity Consulta
+entity Prontuario
+database BancoDeDados
 
-Veterinario -> Tela : informar diagnóstico
+Veterinario -> TelaAtendimento : informarDiagnostico()
+activate TelaAtendimento
 
-Tela -> Controller : registrarAtendimento()
+TelaAtendimento -> AtendimentoController : registrarAtendimento()
+activate AtendimentoController
 
-Controller -> Service : processarAtendimento()
+AtendimentoController -> AtendimentoService : processarAtendimento()
+activate AtendimentoService
 
-Service -> Prontuario : registrarDiagnostico()
+AtendimentoService -> Consulta : verificarStatus()
+activate Consulta
 
-Prontuario --> Service : diagnóstico registrado
+Consulta --> AtendimentoService : statusConsulta
+deactivate Consulta
 
-Service -> BD : atualizarConsulta()
+alt Consulta confirmada
 
-BD --> Service : consulta finalizada
+    AtendimentoService -> Prontuario : registrarDiagnostico()
+    activate Prontuario
 
-Service --> Controller : sucesso
+    Prontuario --> AtendimentoService : diagnosticoSalvo
+    deactivate Prontuario
 
-Controller --> Tela : exibir confirmação
+    AtendimentoService -> BancoDeDados : atualizarConsulta()
+    activate BancoDeDados
+
+    BancoDeDados --> AtendimentoService : consultaConcluida
+    deactivate BancoDeDados
+
+    AtendimentoService --> AtendimentoController : sucesso
+
+else Consulta inválida
+
+    AtendimentoService --> AtendimentoController : erro
+
+end
+
+deactivate AtendimentoService
+
+AtendimentoController --> TelaAtendimento : exibirResultado()
+deactivate AtendimentoController
+
+TelaAtendimento --> Veterinario : confirmação
+deactivate TelaAtendimento
 
 @enduml
