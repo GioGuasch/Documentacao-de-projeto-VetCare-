@@ -1,0 +1,147 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+
+class Usuario {
+  -id: Long
+  -nome: String
+  -email: String
+  -senha: String
+
+  +realizarLogin(): boolean
+  +alterarSenha(): void
+}
+
+class Cliente {
+  -telefone: String
+  -endereco: String
+
+  +consultarHistorico(): void
+}
+
+class Recepcionista {
+  -matricula: String
+
+  +agendarConsulta(): void
+  +cancelarConsulta(): void
+}
+
+class Veterinario {
+  -crmv: String
+  -especialidade: String
+
+  +registrarAtendimento(): void
+  +emitirReceita(): void
+  +registrarVacinacao(): void
+}
+
+class Administrador {
+  -nivelAcesso: Integer
+
+  +gerarRelatorio(): void
+}
+
+class Animal {
+  -id: Long
+  -nome: String
+  -especie: String
+  -raca: String
+  -idade: Integer
+  -peso: Double
+
+  +atualizarDados(): void
+}
+
+class Consulta {
+  -id: Long
+  -dataHora: DateTime
+  -status: StatusConsulta
+  -valor: Double
+  -status : StatusConsulta
+
+  +confirmar(): void
+  +cancelar(): void
+  +finalizar(): void
+}
+
+class Prontuario {
+  -id: Long
+  -diagnostico: String
+  -observacoes: String
+
+  +registrarDiagnostico(): void
+}
+
+class Receita {
+  -id: Long
+  -medicamento: String
+  -dosagem: String
+
+  +gerarReceita(): void
+}
+
+class Vacina {
+  -id: Long
+  -nome: String
+  -fabricante: String
+  -dataAplicacao: Date
+
+  +registrarAplicacao(): void
+}
+
+class Pagamento {
+  -id: Long
+  -valor: Double
+  -status: String
+  -status : StatusPagamento
+
+  +registrarPagamento(): void
+}
+
+class Relatorio {
+  -id: Long
+  -tipo: String
+  -dataGeracao: Date
+
+  +gerar(): void
+}
+
+enum StatusConsulta {
+  AGENDADA
+  CONFIRMADA
+  EM_ATENDIMENTO
+  CONCLUIDA
+  CANCELADA
+  NAO_COMPARECEU
+}
+
+enum StatusPagamento {
+  PENDENTE
+  PAGO
+  CANCELADO
+}
+
+Usuario <|-- Cliente
+Usuario <|-- Recepcionista
+Usuario <|-- Veterinario
+Usuario <|-- Administrador
+
+Cliente "1" -- "1..*" Animal : possui
+
+Animal "1" -- "0..*" Consulta : realiza
+
+Consulta "1" -- "1" Prontuario : gera
+
+Consulta "1" -- "0..*" Receita : emite
+
+Animal "1" -- "0..*" Vacina : recebe
+
+Consulta "1" -- "1" Pagamento : gera
+
+Administrador ..> Relatorio : gera
+
+Consulta --> StatusConsulta
+
+Pagamento --> StatusPagamento
+
+@enduml
