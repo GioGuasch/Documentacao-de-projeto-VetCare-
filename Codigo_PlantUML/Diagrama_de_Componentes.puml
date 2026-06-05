@@ -1,0 +1,58 @@
+@startuml
+
+package "Frontend" {
+    [Interface Web]
+}
+
+package "Backend" {
+
+    [Auth Service]
+
+    [Cliente Service]
+
+    [Animal Service]
+
+    [Consulta Service]
+
+    [Prontuario Service]
+
+    [Vacina Service]
+
+    [Receita Service]
+
+    [Relatorio Service]
+}
+
+database "PostgreSQL"
+
+[Interface Web] --> [Auth Service]
+
+[Interface Web] --> [Cliente Service]
+
+[Interface Web] --> [Animal Service]
+
+[Interface Web] --> [Consulta Service]
+
+[Interface Web] --> [Prontuario Service]
+
+[Interface Web] --> [Vacina Service]
+
+[Interface Web] --> [Receita Service]
+
+[Interface Web] --> [Relatorio Service]
+
+[Consulta Service] --> [Prontuario Service]
+
+[Consulta Service] --> [Receita Service]
+
+[Consulta Service] --> [Vacina Service]
+
+[Cliente Service] --> PostgreSQL
+[Animal Service] --> PostgreSQL
+[Consulta Service] --> PostgreSQL
+[Prontuario Service] --> PostgreSQL
+[Vacina Service] --> PostgreSQL
+[Receita Service] --> PostgreSQL
+[Relatorio Service] --> PostgreSQL
+
+@enduml
