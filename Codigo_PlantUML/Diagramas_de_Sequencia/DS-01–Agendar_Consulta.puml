@@ -5,41 +5,63 @@ actor Recepcionista
 boundary TelaAgendamento
 control ConsultaController
 control ConsultaService
-
 entity Cliente
 entity Animal
 entity Consulta
-
 database BancoDeDados
 
-Recepcionista -> TelaAgendamento : informar dados
+Recepcionista -> TelaAgendamento : informarDadosConsulta()
+activate TelaAgendamento
 
 TelaAgendamento -> ConsultaController : agendarConsulta()
+activate ConsultaController
 
-ConsultaController -> ConsultaService : validarDados()
+ConsultaController -> ConsultaService : validarAgendamento()
+activate ConsultaService
 
 ConsultaService -> Cliente : verificarCadastro()
-
+activate Cliente
 Cliente --> ConsultaService : cliente válido
+deactivate Cliente
 
 ConsultaService -> Animal : verificarCadastro()
-
+activate Animal
 Animal --> ConsultaService : animal válido
+deactivate Animal
 
 ConsultaService -> BancoDeDados : verificarDisponibilidade()
-
+activate BancoDeDados
 BancoDeDados --> ConsultaService : horário disponível
+deactivate BancoDeDados
 
-ConsultaService -> Consulta : criarConsulta()
+alt Horário disponível
 
-Consulta --> ConsultaService : consulta criada
+    ConsultaService -> Consulta : criarConsulta()
+    activate Consulta
 
-ConsultaService -> BancoDeDados : salvarConsulta()
+    Consulta --> ConsultaService : consulta criada
+    deactivate Consulta
 
-BancoDeDados --> ConsultaService : confirmação
+    ConsultaService -> BancoDeDados : salvarConsulta()
+    activate BancoDeDados
 
-ConsultaService --> ConsultaController : sucesso
+    BancoDeDados --> ConsultaService : sucesso
+    deactivate BancoDeDados
 
-ConsultaController --> TelaAgendamento : exibir confirmação
+    ConsultaService --> ConsultaController : confirmação
+
+else Horário indisponível
+
+    ConsultaService --> ConsultaController : erro
+
+end
+
+deactivate ConsultaService
+
+ConsultaController --> TelaAgendamento : exibirResultado()
+deactivate ConsultaController
+
+TelaAgendamento --> Recepcionista : confirmação
+deactivate TelaAgendamento
 
 @enduml
