@@ -1,0 +1,22 @@
+@startuml
+
+[*] --> Agendada
+
+Agendada --> Confirmada : confirmar agendamento
+Agendada --> Cancelada : cancelar consulta
+
+Confirmada --> EmAtendimento : iniciar atendimento
+Confirmada --> NaoCompareceu : ausência do cliente
+Confirmada --> Cancelada : cancelamento
+
+EmAtendimento --> AguardandoExames : solicitar exames
+EmAtendimento --> Concluida : finalizar consulta
+
+AguardandoExames --> EmAtendimento : exames recebidos
+AguardandoExames --> Cancelada : desistência do tratamento
+
+Concluida --> [*]
+Cancelada --> [*]
+NaoCompareceu --> [*]
+
+@enduml
