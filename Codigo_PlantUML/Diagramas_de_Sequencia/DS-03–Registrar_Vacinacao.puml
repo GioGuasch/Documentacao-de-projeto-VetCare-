@@ -1,0 +1,29 @@
+@startuml
+
+actor Veterinario
+
+boundary "Tela Vacinação" as Tela
+control "VacinaController" as Controller
+control "VacinaService" as Service
+entity "Vacina" as Vacina
+database "Banco de Dados" as BD
+
+Veterinario -> Tela : informar vacina aplicada
+
+Tela -> Controller : registrarVacina()
+
+Controller -> Service : validarVacina()
+
+Service -> Vacina : criarRegistro()
+
+Vacina --> Service : registro criado
+
+Service -> BD : salvarVacinacao()
+
+BD --> Service : vacinação registrada
+
+Service --> Controller : sucesso
+
+Controller --> Tela : exibir confirmação
+
+@enduml
