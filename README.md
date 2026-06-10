@@ -20,7 +20,7 @@ Nesse documento estão descritos:
 
 * Introdução ao sistema;
 * Atores e requisitos funcionais;
-* Casos de uso;
+* Casos de Uso;
 * Contratos de operação;
 * Arquitetura do sistema;
 * Diagramas UML;
@@ -77,15 +77,15 @@ Documentacao-de-projeto-VetCare/
 │   │   ├── DS-01_Agendar_Consulta.puml
 │   │   ├── DS-02_Registrar_Atendimento.puml
 │   │   └── DS-03_Registrar_Vacinacao.puml
-│   └── 
+│  
 │
 ├── Diagramas/
 │   ├── Arquitetura.png
-│   ├── Casos de Uso.png
+│   ├── Casos de uso.png
 │   ├── Diagrama de Classes.jpeg
 │   ├── Diagrama de Componentes.png
 │   ├── Diagrama de Estados.png
-│   ├── Diagrama de Implantacao.png
+│   ├── Diagrama de Implantaçãoo.png
 │   ├── Modelo de Dados.png
 │   │
 │   ├── Diagramas_de_Sequencia/
@@ -119,8 +119,6 @@ O projeto contém os seguintes artefatos de modelagem:
 - Diagrama de Casos de Uso
 - Diagrama de Estados
 
-### Diagramas de Interação
-
 #### Diagramas de Sequência
 
 - DS-01 — Agendar Consulta
@@ -138,7 +136,6 @@ O projeto contém os seguintes artefatos de modelagem:
 - Arquitetura do Sistema
 - Diagrama de Implantação
 
-Todos os diagramas foram desenvolvidos utilizando PlantUML, exceto os de Comunicação, feitos no Canva, seus respectivos códigos-fonte encontram-se na pasta `Codigo_PlantUML`.
 
 ## 👤 Autora
 
