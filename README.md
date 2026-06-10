@@ -2,20 +2,30 @@
 
 Sistema de gerenciamento para clínicas veterinárias desenvolvido como projeto da disciplina **Projeto de Software**.
 
-## 📖 Sobre o Projeto
+## 📚 Sobre o Projeto
 
-O VetCare+ é uma solução voltada para o gerenciamento de clínicas veterinárias, permitindo o controle de clientes, animais, consultas, prontuários médicos, receitas veterinárias, registros de vacinação, pagamentos e relatórios administrativos.
+O VetCare+ é um projeto acadêmico desenvolvido para a disciplina de Projeto de Software, com o objetivo de aplicar conceitos de análise e modelagem orientada a objetos por meio da documentação completa de um sistema de gestão para clínicas veterinárias.
 
-O projeto foi desenvolvido com o objetivo de aplicar conceitos de Engenharia de Software e modelagem UML, utilizando diagramas para representar os requisitos, a arquitetura e a estrutura do sistema antes da implementação.
+O trabalho contempla a especificação dos requisitos, modelagem UML, arquitetura de software, modelagem de dados e documentação técnica do sistema, sem a implementação do código-fonte da aplicação.
 
-## 🎯 Objetivos
+Toda a documentação foi elaborada utilizando PlantUML e organizada em artefatos que representam as diferentes visões do sistema, seguindo boas práticas de engenharia de software.
 
-* Centralizar informações de clientes e animais.
-* Facilitar o gerenciamento de consultas veterinárias.
-* Permitir o registro de atendimentos e prontuários médicos.
-* Controlar aplicações de vacinas e emissão de receitas.
-* Organizar pagamentos e relatórios administrativos.
-* Aplicar boas práticas de modelagem de software utilizando UML e PlantUML.
+## 📄 Documentação
+
+A documentação completa do projeto encontra-se no arquivo:
+
+`Documentacao_Projeto_VetCarePlus.pdf`
+
+Nesse documento estão descritos:
+
+* Introdução ao sistema;
+* Atores e requisitos funcionais;
+* Casos de uso;
+* Contratos de operação;
+* Arquitetura do sistema;
+* Diagramas UML;
+* Modelo de dados;
+* Decisões de projeto adotadas durante a modelagem.
 
 ## ✨ Funcionalidades Principais
 
