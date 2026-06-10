@@ -119,13 +119,13 @@ O projeto contém os seguintes artefatos de modelagem:
 - Diagrama de Casos de Uso
 - Diagrama de Estados
 
-#### Diagramas de Sequência
+### Diagramas de Sequência
 
 - DS-01 — Agendar Consulta
 - DS-02 — Registrar Atendimento
 - DS-03 — Registrar Vacinação
 
-#### Diagramas de Comunicação
+### Diagramas de Comunicação
 
 - DC-01 — Agendar Consulta
 - DC-02 — Registrar Atendimento
