@@ -85,7 +85,7 @@ Documentacao-de-projeto-VetCare/
 │   ├── Diagrama de Classes.jpeg
 │   ├── Diagrama de Componentes.png
 │   ├── Diagrama de Estados.png
-│   ├── Diagrama de Implantaçãoo.png
+│   ├── Diagrama de Implantação.png
 │   ├── Modelo de Dados.png
 │   │
 │   ├── Diagramas_de_Sequencia/
